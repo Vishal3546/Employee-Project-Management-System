@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Form</title>
+
+  <link rel="stylesheet" href="css/Sign_up.css">
+</head>
+
+<body>
+  <div class="form-container">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <label for="name">Full Name</label>
+      <input type="text" class="input_width" id="name" name="name" placeholder="Enter your full name" required>
+
+      <label for="email">Email</label>
+      <input type="email" class="input_width" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="contact">Contact Number</label>
+      <input type="tel" class="input_width" id="contact" name="contact" placeholder="Enter your contact number"
+        required>
+
+      <label for="password">Password</label>
+      <input type="password" class="input_width" id="password" name="password" placeholder="Enter password" required>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="showPassword" onclick="showPassword()">
+        <label for="showPassword">Show Password</label>
+      </div>
+
+      <button type="submit">Sign Up</button>
+
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+  <script>
+    function showPassword() {
+      let password = document.getElementById("password");
+      if (password.type === "password") {
+        password.type = "text";
+      } else {
+        password.type = "password";
+      }
+    }
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $("#signupForm").on("submit", function (e) {
+        e.preventDefault();
+
+        let adminData = {
+          name: $("#name").val(),
+          email: $("#email").val(),
+          contact: $("#contact").val(),
+          password: $("#password").val()
+        };
+
+        $.ajax({
+          url: "http://localhost:8080/admin/signup",
+          type: "POST",
+          contentType: "application/json",
+          data: JSON.stringify(adminData),
+          success: function (response) {
+
+            setTimeout(function () {
+              window.location.href = "login.html";
+            }, 1000);
+          },
+          error: function () {
+            alert("Error while signing up!");
+          }
+        });
+      });
+    });
+  </script>
+
+
+
+</body>
+
+</html>

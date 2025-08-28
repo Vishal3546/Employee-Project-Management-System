@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment Create Form</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+  <div class="main">
+    <div class="sidebar">
+      <img src="images/logo.png" width="130" class="d-block mx-auto mb-3" alt="">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="Dashboard.html" class="nav-link d-block">Dashboard</a></li>
+        <li class="nav-item"><a href="Employee.html" class="nav-link d-block">Emloyee Management</a></li>
+        <li class="nav-item"><a href="Project.html" class="nav-link d-block">Project Management</a></li>
+        <li class="nav-item"><a href="Assignments.html" class="nav-link d-block">Assignment</a></li>
+        <li class="nav-item"><a href="Reporting.html" class="nav-link d-block">Reporting</a></li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <!------Navbar Start------>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary p-3 shadow-sm">
+        <div class="container-fluid">
+          <button class="border-0" type="button" id="toggleBtn">
+            <i class="fa-solid fa-bars-staggered"></i>
+          </button>
+          <ul class="nav align-items-center">
+            <li class="nav-item">
+              <a href="login.html" class="nav-link text-dark">
+                <img src="images/user.png" width="25" alt="">
+                <span id="username">User</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!------Navbar End------>
+
+      <div class="inner-content">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3 class="mb-3">Create Assignment</h3>
+        </div>
+        <div class="card shadow-lg p-4 rounded-4">
+
+          <form class="row">
+
+            <div class="mb-3">
+              <label for="dropdown1" class="form-label">Select Employee</label>
+              <select class="form-select" id="dropdown1">
+                <option selected disabled>Choose...</option>
+
+              </select>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="dropdown2" class="form-label">Select Project</label>
+              <select class="form-select" id="dropdown2">
+                <option selected disabled>Choose...</option>
+
+              </select>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <a href="Assignments.html" class="btn btn-secondary">Back To Assignment List</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      </form>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#toggleBtn').click(function () {
+        $('.sidebar').toggleClass('full');
+        $('.content').toggleClass('full');
+      })
+    })
+  </script>
+
+  <script>
+
+    $(document).ready(function () {
+
+      $.ajax({
+        url: "http://localhost:8080/list",
+        type: "GET",
+        success: function (data) {
+          data.forEach(function (emp) {
+            $("#dropdown1").append(
+              `<option value="${emp.emid}">${emp.name}</option>`
+            );
+          });
+        },
+        error: function () {
+          alert("Failed to load employees");
+        }
+      });
+
+      $.ajax({
+        url: "http://localhost:8080/ProjectList",
+        type: "GET",
+        success: function (data) {
+          data.forEach(function (project) {
+            $("#dropdown2").append(
+              `<option value="${project.prid}">${project.projectname}</option>`
+            );
+          });
+        },
+        error: function () {
+          alert("Failed to load projects");
+        }
+      });
+
+      $("form").on("submit", function (e) {
+        e.preventDefault();
+
+        let assignment = {
+          emid: $("#dropdown1").val(),
+          prid: $("#dropdown2").val()
+        };
+
+        $.ajax({
+          url: "http://localhost:8080/AssignmentCreate",
+          type: "POST",
+          contentType: "application/json",
+          data: JSON.stringify(assignment),
+          success: function (response) {
+           // alert("Assignment Created Successfully!");
+            window.location.href = "Assignments.html";
+          },
+          error: function () {
+            alert("Error creating assignment!");
+          }
+        });
+      });
+
+    });
+
+  </script>
+
+
+</body>
+
+</html>
