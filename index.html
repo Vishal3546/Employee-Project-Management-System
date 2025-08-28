@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-primary d-flex justify-content-center align-items-center" style="height: 100vh;">
+<body class="bg-warning d-flex justify-content-center align-items-center" style="height: 100vh;">
 
     <form action="" id="signupForm" class="p-4 bg-white mx-auto shadow rounded login-box">
-        <img src="images/logo.webp" width="150" alt="" class="d-block mx-auto">
-        <h3 class="text-center">Login here</h3>
+        <img src="images/logo.png" width="150" alt="" class="d-block mx-auto">
+        <h3 class="text-center">Login Form</h3>
 
         <div class="mb-3">
             <label for="" class="form-label mb-1 text-secondary">Email</label>
@@ -23,11 +23,8 @@
             <label for="" class="form-label mb-1 text-secondary">Password</label>
             <input type="password" id="password" class="form-control">
         </div>
-        <a href="#" class="text-decoration-none float-end small">Forgot Password ?</a>
         <div>
-
             <button type="submit" class="btn btn-primary">Submit</button>
-            
         </div>
     </form>
 
@@ -38,36 +35,36 @@
 
 
     <script>
-    $("#signupForm").on("submit", function (e) {
-        e.preventDefault();
+        $("#signupForm").on("submit", function (e) {
+            e.preventDefault();
 
-        var loginData = {
-            email: $("#email").val(),
-            password: $("#password").val()
-        };
+            var loginData = {
+                email: $("#email").val(),
+                password: $("#password").val()
+            };
 
-        $.ajax({
-            url: "http://localhost:8080/admin/login",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(loginData),
-            success: function (response) {
-                
-                if (response === "success") {
-                    
-                    localStorage.setItem("username", loginData.email);
+            $.ajax({
+                url: "http://localhost:8080/admin/login",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(loginData),
+                success: function (response) {
 
-                    window.location.href = "dashboard.html";
-                } else {
-                    alert("Invalid user");
+                    if (response === "success") {
+
+                        localStorage.setItem("username", loginData.email);
+
+                        window.location.href = "dashboard.html";
+                    } else {
+                        alert("Invalid user");
+                    }
+                },
+                error: function (xhr) {
+                    alert("Login failed: " + xhr.responseText);
                 }
-            },
-            error: function (xhr) {
-                alert("Login failed: " + xhr.responseText);
-            }
+            });
         });
-    });
-</script>
+    </script>
 
 
 

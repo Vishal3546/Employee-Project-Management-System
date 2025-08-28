@@ -45,7 +45,7 @@ body {
 }
 
 .content {
-    -border: 1px solid blue;
+    
     width: calc(100% - 250px);
     flex-grow: 1;
     margin-left: 250px;
@@ -53,7 +53,7 @@ body {
 }
 
 .inner-content {
-    -border: 1px solid red;
+    
     height: calc(100% - 76px);
     padding: 25px;
 }
