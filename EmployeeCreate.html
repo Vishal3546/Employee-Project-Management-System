@@ -81,7 +81,7 @@
 
             <div class="text-end mt-3">
               <button type="button" onclick="submitData();" class="btn btn-primary px-4">Save</button>
-              <a href="employee.html" class="btn btn-secondary">Back To List</a>
+              <a href="Employee.html" class="btn btn-secondary">Back To List</a>
             </div>
           </form>
         </div>
@@ -122,7 +122,7 @@
         contentType: 'application/json',
         data: JSON.stringify(userdata),
         success: function (res) {
-          window.location.href = "employee.html";
+          window.location.href = "Employee.html";
         }
       });
     }
