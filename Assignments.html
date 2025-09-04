@@ -89,7 +89,7 @@
     $(document).ready(function () {
       
       $.ajax({
-        url: "http://localhost:8080/AssignmentList",
+        url: "https://employee-api-nda2.onrender.com/AssignmentList",
         type: "GET",
         success: function (data) {
           $("#tblData").empty();
@@ -122,7 +122,7 @@
       $("#DeleteBtn").click(function () {
         if (deleteId) {
           $.ajax({
-            url: "http://localhost:8080/assignment/delete",
+            url: "https://employee-api-nda2.onrender.com/assignment/delete",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({ assid: deleteId }),

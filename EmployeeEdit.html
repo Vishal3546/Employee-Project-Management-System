@@ -81,7 +81,7 @@
 
             <div class="text-end mt-3">
               <button type="button" onclick="editData();" class="btn btn-primary px-4">Submit</button>
-              <a href="employee.html" class="btn btn-secondary">Back To List</a>
+              <a href="Employee.html" class="btn btn-secondary">Back To List</a>
             </div>
           </form>
         </div>
@@ -115,7 +115,7 @@
 
       if (empId) {
         $.ajax({
-          url: `http://localhost:8080/edit/${empId}`,
+          url: `https://employee-api-nda2.onrender.com/edit/${empId}`,
           method: 'GET',
           success: function (data) {
             $('#name').val(data.name);
@@ -145,7 +145,7 @@
       };
 
       $.ajax({
-        url: 'http://localhost:8080/EmployeeEdit',
+        url: 'https://employee-api-nda2.onrender.com/EmployeeEdit',
         method: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(updatedData),

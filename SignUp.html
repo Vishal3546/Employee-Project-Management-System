@@ -36,8 +36,7 @@
     </form>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  
   <script src="js/jquery-3.7.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
 
@@ -67,7 +66,7 @@
         };
 
         $.ajax({
-          url: "http://localhost:8080/admin/signup",
+          url: "https://employee-api-nda2.onrender.com/admin/signup",
           type: "POST",
           contentType: "application/json",
           data: JSON.stringify(adminData),

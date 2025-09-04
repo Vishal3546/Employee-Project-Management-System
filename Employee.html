@@ -99,7 +99,7 @@
         $("#tblData").html("");
 
         $.ajax({
-          url: 'http://localhost:8080/list',
+          url: 'https://employee-api-nda2.onrender.com/list',
           method: 'GET',
           contentType: 'application/json',
           success: function (response) {
@@ -125,7 +125,7 @@
       $('#DeleteBtn').on('click', function () {
         if (deleteUserId) {
           $.ajax({
-            url: 'http://localhost:8080/delete',
+            url: 'https://employee-api-nda2.onrender.com/delete',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ emid: deleteUserId }),

@@ -102,7 +102,7 @@
     $(document).ready(function () {
 
       $.ajax({
-        url: "http://localhost:8080/list",
+        url: "https://employee-api-nda2.onrender.com/list",
         type: "GET",
         success: function (data) {
           data.forEach(function (emp) {
@@ -117,7 +117,7 @@
       });
 
       $.ajax({
-        url: "http://localhost:8080/ProjectList",
+        url: "https://employee-api-nda2.onrender.com/ProjectList",
         type: "GET",
         success: function (data) {
           data.forEach(function (project) {
@@ -140,7 +140,7 @@
         };
 
         $.ajax({
-          url: "http://localhost:8080/AssignmentCreate",
+          url: "https://employee-api-nda2.onrender.com/AssignmentCreate",
           type: "POST",
           contentType: "application/json",
           data: JSON.stringify(assignment),

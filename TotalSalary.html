@@ -78,6 +78,8 @@
 
 
   <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
   <script>
     $(document).ready(function () {
       $('#toggleBtn').click(function () {
@@ -89,7 +91,7 @@
   <script>
     $(document).ready(function () {
       $.ajax({
-        url: "http://localhost:8080/TotalSalary",
+        url: "https://employee-api-nda2.onrender.com/TotalSalary",
         method: "GET",
         dataType: "json",
         success: function (data) {

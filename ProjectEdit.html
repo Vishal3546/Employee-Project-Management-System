@@ -93,8 +93,6 @@
   </div>
 
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="js/jquery-3.7.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script>
@@ -121,7 +119,7 @@
 
       if (proId) {
         $.ajax({
-          url: `http://localhost:8080/project/edit/${proId}`,
+          url: `https://employee-api-nda2.onrender.com/project/edit/${proId}`,
           method: 'GET',
           success: function (data) {
             $('#pname').val(data.projectname);
@@ -151,7 +149,7 @@
       };
 
       $.ajax({
-        url: 'http://localhost:8080/ProjectEdit',
+        url: 'https://employee-api-nda2.onrender.com/ProjectEdit',
         method: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(updatedData),

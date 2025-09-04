@@ -76,8 +76,6 @@
   </div>
 
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="js/jquery-3.7.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script>
@@ -100,7 +98,7 @@
         $("#tblData").html("");
 
         $.ajax({
-          url: 'http://localhost:8080/ProjectList',
+          url: 'https://employee-api-nda2.onrender.com/ProjectList',
           method: 'GET',
           contentType: 'application/json',
           success: function (response) {
@@ -128,7 +126,7 @@
       $('#DeleteBtn').on('click', function () {
         if (deleteUserId) {
           $.ajax({
-            url: 'http://localhost:8080/project/delete',
+            url: 'https://employee-api-nda2.onrender.com/project/delete',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ prid: deleteUserId }),
